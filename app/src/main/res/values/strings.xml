@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BengkelQ</string>
+    <string name="title_activity_home1">Beranda</string>
+    <string name="action_keluar">Keluar</string>
+</resources>

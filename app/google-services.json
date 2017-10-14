@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1043358640555",
+    "firebase_url": "https://bengkelq-kppl.firebaseio.com",
+    "project_id": "bengkelq-kppl",
+    "storage_bucket": "bengkelq-kppl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043358640555:android:9343629fbd49b417",
+        "android_client_info": {
+          "package_name": "com.example.gil.bengkelq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043358640555-6f132qfatk2vcpei7d1dgiv4uaefvngj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gil.bengkelq",
+            "certificate_hash": "9bed5bbefa5276b9d0da0595dca236cc838af86f"
+          }
+        },
+        {
+          "client_id": "1043358640555-n5ki410nbe4kbknr8fg7gi53muvsch53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-2RutQPSFiOnIEKZuAjYp6icgwOMz91Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043358640555-n5ki410nbe4kbknr8fg7gi53muvsch53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
