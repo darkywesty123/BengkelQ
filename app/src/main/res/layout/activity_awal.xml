@@ -27,30 +27,33 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:orientation="vertical"
-            android:weightSum="1">
+            android:weightSum="1"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
                 android:layout_weight="0.93"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bq1" />
+                android:src="@drawable/bq1"
+                tools:ignore="ContentDescription" />
 
             <Button
                 android:id="@+id/BtnLoginAwal"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="MASUK" />
+                android:text="@string/masuk" />
 
             <Button
                 android:id="@+id/BtnRegisterAwal"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="DAFTAR" />
+                android:text="@string/daftar"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

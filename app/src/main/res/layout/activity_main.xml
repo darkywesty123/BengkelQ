@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
 
             <EditText
                 android:id="@+id/editTextEmail"
@@ -36,7 +37,8 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:hint="Masukkan email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/editTextPassword"
@@ -44,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:hint="Masukkan kata sandi"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/BtnLogin"
@@ -52,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:text="MASUK" />
+                android:text="@string/masuk_user" />
 
         </LinearLayout>
     </RelativeLayout>
