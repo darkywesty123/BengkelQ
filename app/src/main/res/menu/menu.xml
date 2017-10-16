@@ -2,12 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_maps"
-        android:icon="@android:drawable/ic_menu_compass"
-        android:title="Pencarian"
+        android:id="@+id/help"
+        android:title="@string/action_help"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/keluar"
         android:title="@string/action_keluar"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>

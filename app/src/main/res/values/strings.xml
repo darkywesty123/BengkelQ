@@ -8,4 +8,6 @@
     <string name="pengguna">PENGGUNA</string>
     <string name="mendaftar_sebagai">mendaftar sebagai</string>
     <string name="masuk_user">MASUK</string>
+    <string name="action_help">Help</string>
+    <string name="auth_failed" />
 </resources>

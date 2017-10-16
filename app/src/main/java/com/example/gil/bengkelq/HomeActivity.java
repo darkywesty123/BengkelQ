@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -19,8 +21,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setHasOptionsMenu(true);
+
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_home);
-        cekAkun();
+        //cekAkun();
 
     }
 
@@ -34,12 +38,11 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-//                mAuth.signOut();
-//                cekAkun();
+            case R.id.keluar:
+                signOut();
                 return true;
 
-            case R.id.menu_maps:
+            case R.id.help:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
                 return true;
@@ -48,11 +51,11 @@ public class HomeActivity extends AppCompatActivity {
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
     }
 
-    private void cekAkun() {
+
+    /*private void cekAkun() {
         FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -65,5 +68,11 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         };
+    }*/
+
+    private void signOut(){
+        mAuth.signOut();
+        finish();
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class AwalActivity extends AppCompatActivity {
+public class AwalActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button BtnLoginAwal;
     private Button BtnRegisterAwal;
@@ -19,20 +19,16 @@ public class AwalActivity extends AppCompatActivity {
         BtnLoginAwal = (Button) findViewById(R.id.BtnLoginAwal);
         BtnRegisterAwal = (Button) findViewById(R.id.BtnRegisterAwal);
 
-        BtnLoginAwal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginAwal = new Intent(AwalActivity.this, MainActivity.class);
-                startActivity(loginAwal);
-            }
-        });
+        BtnLoginAwal.setOnClickListener(this);
+        BtnRegisterAwal.setOnClickListener(this);
+    }
 
-        BtnRegisterAwal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent RegisterAwal = new Intent(AwalActivity.this, PilihDaftarActivity.class);
-                startActivity(RegisterAwal);
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.BtnLoginAwal){
+            startActivity(new Intent(this, MainActivity.class));
+        }else if(v.getId()==R.id.BtnRegisterAwal){
+            startActivity(new Intent(this, PilihDaftarActivity.class));
+        }
     }
 }

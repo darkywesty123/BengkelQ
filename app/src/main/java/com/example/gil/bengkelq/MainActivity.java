@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference dataAkun;
 
     private ProgressDialog progressLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currUser = mAuth.getCurrentUser();
+        checkLogin();
+    }
+
     private void checkLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -63,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
             progressLogin.setMessage("Mengecek akun ...");
             progressLogin.show();
-
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -74,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         mauCek.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                if(dataSnapshot.getValue().equals("PENGGUNA")) {
+                                if(dataSnapshot.getValue().equals("PENGGUNA")){
                                     progressLogin.dismiss();
                                     finish();
                                     Intent masukPengguna = new Intent(MainActivity.this, HomeActivity.class);
