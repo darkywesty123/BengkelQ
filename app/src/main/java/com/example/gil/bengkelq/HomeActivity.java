@@ -20,11 +20,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setHasOptionsMenu(true);
 
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_home);
-        //cekAkun();
 
     }
 
@@ -53,22 +51,6 @@ public class HomeActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-    /*private void cekAkun() {
-        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(HomeActivity.this, AwalActivity.class));
-                    finish();
-                }
-            }
-        };
-    }*/
 
     private void signOut(){
         mAuth.signOut();
