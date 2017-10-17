@@ -99,6 +99,8 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
                             }
                         }
                     });
+        } else {
+            Toast.makeText(Dafbengkel2Activity.this, "Identitas bengkel belum lengkap", Toast.LENGTH_LONG).show();
         }
 
     }

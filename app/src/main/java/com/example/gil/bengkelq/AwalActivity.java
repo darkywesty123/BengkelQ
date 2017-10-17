@@ -25,9 +25,10 @@ public class AwalActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.BtnLoginAwal){
+        if(v == BtnLoginAwal){
             startActivity(new Intent(this, MainActivity.class));
-        }else if(v.getId()==R.id.BtnRegisterAwal){
+        }
+        else if(v == BtnRegisterAwal){
             startActivity(new Intent(this, PilihDaftarActivity.class));
         }
     }

@@ -87,10 +87,12 @@ public class DafpenggunaActivity extends AppCompatActivity implements View.OnCli
                             startActivity(new Intent(DafpenggunaActivity.this, HomeActivity.class));
                         } else {
                             progressDaftar.dismiss();
-                            Toast.makeText(DafpenggunaActivity.this, "Terdapat kesalahan"+role, Toast.LENGTH_LONG).show();
+                            Toast.makeText(DafpenggunaActivity.this, "Terdapat kesalahan", Toast.LENGTH_LONG).show();
                         }
                         }
                     });
+        } else {
+            Toast.makeText(DafpenggunaActivity.this, "Identitas pengguna belum lengkap", Toast.LENGTH_LONG).show();
         }
 
     }

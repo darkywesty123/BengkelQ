@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.content.Intent;
+import android.widget.Toast;
 
 public class DafbengkelActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,6 +55,8 @@ public class DafbengkelActivity extends AppCompatActivity implements View.OnClic
             intent.putExtra("passB", passwordBengkel.getText().toString());
             intent.putExtra("phoneB", phoneBengkel.getText().toString());
             startActivity(intent);
+        } else {
+            Toast.makeText(DafbengkelActivity.this, "Identitas pemilik belum lengkap", Toast.LENGTH_LONG).show();
         }
     }
 

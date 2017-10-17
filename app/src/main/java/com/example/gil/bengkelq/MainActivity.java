@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -49,19 +49,14 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         BtnLogin = (Button) findViewById(R.id.BtnLogin);
 
-        BtnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkLogin();
-            }
-        });
+        BtnLogin.setOnClickListener(this);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser currUser = mAuth.getCurrentUser();
-        checkLogin();
+//        checkLogin();
     }
 
     private void checkLogin() {
@@ -108,6 +103,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        } else {
+            Toast.makeText(MainActivity.this, "Lengkapi Email dan Password", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == BtnLogin){
+            checkLogin();
         }
     }
 }

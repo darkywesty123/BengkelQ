@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class PilihDaftarActivity extends AppCompatActivity {
+public class PilihDaftarActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button pengguna;
     private Button bengkel;
@@ -19,20 +19,16 @@ public class PilihDaftarActivity extends AppCompatActivity {
         pengguna = (Button) findViewById(R.id.BtnPengguna);
         bengkel = (Button) findViewById(R.id.BtnBengkel);
 
-        pengguna.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent dafpengguna = new Intent(PilihDaftarActivity.this, DafpenggunaActivity.class);
-                startActivity(dafpengguna);
-            }
-        });
+        pengguna.setOnClickListener(this);
+        bengkel.setOnClickListener(this);
+    }
 
-        bengkel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent dafbengkel = new Intent(PilihDaftarActivity.this, DafbengkelActivity.class);
-                startActivity(dafbengkel);
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        if (v == pengguna) {
+            startActivity(new Intent(this, DafpenggunaActivity.class));
+        } else if (v == bengkel) {
+            startActivity(new Intent(this, DafbengkelActivity.class));
+        }
     }
 }
