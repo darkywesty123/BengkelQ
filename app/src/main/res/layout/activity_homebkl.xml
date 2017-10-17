@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="#009688"
     tools:context="com.example.gil.bengkelq.HomebklActivity">
 
     <RelativeLayout
@@ -14,6 +14,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="218dp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,12 +29,15 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="PEMILIK BENGKEL"
+                android:text="HALO PEMILIK BENGKEL :)"
+                android:textColor="#FFFF"
                 android:textSize="25sp"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
