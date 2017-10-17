@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="#9FA8DA"
     tools:context="com.example.gil.bengkelq.AwalActivity">
 
     <RelativeLayout
@@ -19,7 +19,9 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1">
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="446dp"
+        app:layout_constraintHorizontal_bias="0.0">
 
         <LinearLayout
             android:layout_width="wrap_content"
