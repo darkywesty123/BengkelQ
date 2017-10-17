@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="#009688"
     tools:context="com.example.gil.bengkelq.DafpenggunaActivity">
 
     <RelativeLayout
@@ -40,7 +40,9 @@
                 android:inputType="text"
                 android:text="PENGGUNA"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                />
 
             <EditText
                 android:id="@+id/editTextNamaPengguna"
