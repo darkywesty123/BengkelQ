@@ -52,6 +52,11 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        // your code.
+    }
+
     private void signOut(){
         mAuth.signOut();
         finish();
