@@ -29,6 +29,7 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dataBengkel;
 
+    private FBHelper fbHelper = new FBHelper();
     private ProgressDialog progressDaftar;
 
     @Override
@@ -60,7 +61,7 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
 
     private void registerBengkel() {
 
-        final String role = getIntent().getStringExtra("roleB").trim();
+        //final String role = getIntent().getStringExtra("roleB").trim();
         final String namaPemilik = getIntent().getStringExtra("namaPem").trim();
         final String phonePemilik = getIntent().getStringExtra("phoneB").trim();
         String email = getIntent().getStringExtra("emailB").trim();
@@ -71,7 +72,7 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
 
         if(!TextUtils.isEmpty(namaBengkel) && !TextUtils.isEmpty(alamatBengkel) &&!TextUtils.isEmpty(descBengkel)) {
 
-            progressDaftar.setMessage("Mendaftarkan bengkel ...");
+            /*progressDaftar.setMessage("Mendaftarkan bengkel ...");
             progressDaftar.show();
 
             firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -98,7 +99,10 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
                                 Toast.makeText(Dafbengkel2Activity.this, "Terdapat kesalahan", Toast.LENGTH_LONG).show();
                             }
                         }
-                    });
+                    });*/
+            fbHelper.registerUser(email, password, namaPemilik, "PEMILIK", Dafbengkel2Activity.this, this, phonePemilik,namaBengkel,alamatBengkel,descBengkel);
+
+
         } else {
             Toast.makeText(Dafbengkel2Activity.this, "Identitas bengkel belum lengkap", Toast.LENGTH_LONG).show();
         }

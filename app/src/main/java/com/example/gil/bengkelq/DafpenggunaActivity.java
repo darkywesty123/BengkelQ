@@ -21,10 +21,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DafpenggunaActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView rolePengguna;
-    private EditText NamaPengguna;
-    private EditText EmailPengguna;
-    private EditText PasswordPengguna;
+    private EditText namaPengguna;
+    private EditText emailPengguna;
+    private EditText passwordPengguna;
     private Button buttonDaftarPengguna;
+    private FBHelper fbHelper = new FBHelper();
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dataPengguna;
@@ -37,15 +38,12 @@ public class DafpenggunaActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_dafpengguna);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         dataPengguna = FirebaseDatabase.getInstance().getReference().child("akun");
 
-        progressDaftar = new ProgressDialog(this);
-
         rolePengguna = (TextView) findViewById(R.id.textViewRolePengguna);
-        NamaPengguna = (EditText) findViewById(R.id.editTextNamaPengguna);
-        EmailPengguna = (EditText) findViewById(R.id.editTextEmailPengguna);
-        PasswordPengguna = (EditText) findViewById(R.id.editTextPasswordPengguna);
+        namaPengguna = (EditText) findViewById(R.id.editTextNamaPengguna);
+        emailPengguna = (EditText) findViewById(R.id.editTextEmailPengguna);
+        passwordPengguna = (EditText) findViewById(R.id.editTextPasswordPengguna);
         buttonDaftarPengguna = (Button) findViewById(R.id.BtnDaftarPengguna);
 
         buttonDaftarPengguna.setOnClickListener(this);
@@ -60,37 +58,13 @@ public class DafpenggunaActivity extends AppCompatActivity implements View.OnCli
 
     private void registerUser() {
 
-        final String nama = NamaPengguna.getText().toString().trim();
-        final String role = rolePengguna.getText().toString().trim();
-        String email = EmailPengguna.getText().toString().trim();
-        String password = PasswordPengguna.getText().toString().trim();
+        final String nama = namaPengguna.getText().toString().trim();
+        //final String role = rolePengguna.getText().toString().trim();
+        String email = emailPengguna.getText().toString().trim();
+        String password = passwordPengguna.getText().toString().trim();
 
         if(!TextUtils.isEmpty(nama) && !TextUtils.isEmpty(email) &&!TextUtils.isEmpty(password)) {
-
-            progressDaftar.setMessage("Mendaftarkan pengguna ...");
-            progressDaftar.show();
-
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            String user_id = firebaseAuth.getCurrentUser().getUid();
-                            DatabaseReference baruDaftarPengguna = dataPengguna.child(user_id);
-
-                            baruDaftarPengguna.child("nama").setValue(nama);
-                            baruDaftarPengguna.child("role").setValue(role);
-
-                            progressDaftar.dismiss();
-
-                            Toast.makeText(DafpenggunaActivity.this, "Pendaftaran berhasil", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(DafpenggunaActivity.this, HomeActivity.class));
-                        } else {
-                            progressDaftar.dismiss();
-                            Toast.makeText(DafpenggunaActivity.this, "Terdapat kesalahan", Toast.LENGTH_LONG).show();
-                        }
-                        }
-                    });
+            fbHelper.registerUser(email, password, nama, "PENGGUNA", this, DafpenggunaActivity.this, null,null,null,null);
         } else {
             Toast.makeText(DafpenggunaActivity.this, "Identitas pengguna belum lengkap", Toast.LENGTH_LONG).show();
         }

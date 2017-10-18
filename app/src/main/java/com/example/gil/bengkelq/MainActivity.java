@@ -1,8 +1,11 @@
 package com.example.gil.bengkelq;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,20 +32,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button BtnLogin;
 
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference dataAkun;
 
     private ProgressDialog progressLogin;
+    private FBHelper fbhelper = new FBHelper();;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mAuth = FirebaseAuth.getInstance();
 
-        dataAkun = FirebaseDatabase.getInstance().getReference().child("akun");
 
-        progressLogin = new ProgressDialog(this);
+        //dataAkun = FirebaseDatabase.getInstance().getReference().child("akun");
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                // Ambil informasi user saat ini
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                // Jika masih login (variabel user != null)
+                if (user != null) {
+                    fbhelper.getRole(MainActivity.this);
+                }
+            }
+        };
+
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
@@ -51,17 +74,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BtnLogin.setOnClickListener(this);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-//        FirebaseUser currUser = mAuth.getCurrentUser();
-    }
-
-    public void checkLogin(String email, String password) {
+    private void checkLogin() {
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
-
-            progressLogin.setMessage("Mengecek akun ...");
+            fbhelper.login(email,password,this);
+            /*progressLogin.setMessage("Mengecek akun ...");
             progressLogin.show();
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -78,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     finish();
                                     Intent masukPengguna = new Intent(MainActivity.this, HomeActivity.class);
                                     startActivity(masukPengguna);
+
                                 } else {
                                     progressLogin.dismiss();
                                     finish();
@@ -92,23 +112,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         });
 
+
                     } else {
                         progressLogin.dismiss();
                         Toast.makeText(MainActivity.this, "Email/password salah", Toast.LENGTH_LONG).show();
                     }
                 }
-            });
+            });*/
         } else {
             Toast.makeText(MainActivity.this, "Lengkapi Email dan Password", Toast.LENGTH_LONG).show();
         }
     }
 
+
+
     @Override
     public void onClick(View v) {
         if(v == BtnLogin){
-            String emailMasuk = editTextEmail.getText().toString().trim();
-            String passwordMasuk = editTextPassword.getText().toString().trim();
-            checkLogin(emailMasuk, passwordMasuk);
+            checkLogin();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
         }
     }
 }
