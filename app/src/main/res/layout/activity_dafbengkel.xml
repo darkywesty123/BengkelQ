@@ -39,7 +39,7 @@
                 android:layout_marginTop="5dp"
                 android:inputType="text"
                 android:text="PEMILIK BENGKEL"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFFFF"
                 />
@@ -85,7 +85,8 @@
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="BERIKUTNYA" />
+                android:text="BERIKUTNYA"
+                android:textSize="15dp" />
 
         </LinearLayout>
     </RelativeLayout>
