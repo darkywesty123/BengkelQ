@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ProgressDialog progressLogin;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +54,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currUser = mAuth.getCurrentUser();
-//        checkLogin();
+//        FirebaseUser currUser = mAuth.getCurrentUser();
     }
 
-    private void checkLogin() {
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+    public void checkLogin(String email, String password) {
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
@@ -96,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         });
 
-
                     } else {
                         progressLogin.dismiss();
                         Toast.makeText(MainActivity.this, "Email/password salah", Toast.LENGTH_LONG).show();
@@ -111,7 +106,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v == BtnLogin){
-            checkLogin();
+            String emailMasuk = editTextEmail.getText().toString().trim();
+            String passwordMasuk = editTextPassword.getText().toString().trim();
+            checkLogin(emailMasuk, passwordMasuk);
         }
     }
 }
