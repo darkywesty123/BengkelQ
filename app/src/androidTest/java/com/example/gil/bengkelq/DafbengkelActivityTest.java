@@ -97,22 +97,20 @@ public class DafbengkelActivityTest {
         //onView(withText("Identitas pemilik belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 
-    /*@Test
+    @Test
     public void testDaftar1(){
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPemilik)).perform(typeText("Pemilik Bengkel 1"));
-        onView(withId(R.id.editTextEmailBengkel)).perform(typeText("bengkelbengkel@gmail.com"));
-        onView(withId(R.id.editTextPasswordBengkel)).perform(typeText("pemilik1"));
-        onView(withId(R.id.editTextPhoneBengkel)).perform(typeText("081234234234"));
+        onView(withId(R.id.editTextNamaPemilik)).perform(typeText("Pemilik Bengkel 1"),closeSoftKeyboard());
+        onView(withId(R.id.editTextEmailBengkel)).perform(typeText("bengkelbengkel1@gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.editTextPasswordBengkel)).perform(typeText("pemilik1"),closeSoftKeyboard());
+        onView(withId(R.id.editTextPhoneBengkel)).perform(typeText("081234234234"),closeSoftKeyboard());
         onView(withId(R.id.BtnLanjut1)).perform(click());
-        pauseTestFor(500);
-        onView(withId(R.id.editTextNamaBengkel)).perform(typeText("Pemilik"),closeSoftKeyboard());
-        onView(withId(R.id.editTextAlamatBengkel)).perform(typeText("Almata bengkel"),closeSoftKeyboard());
-        onView(withId(R.id.editTextDescBengkel)).perform(typeText("desc bengkel"),closeSoftKeyboard());
+        pauseTestFor(2000);
+        onView(withId(R.id.editTextNamaBengkel)).perform(typeText("Pemilik"),closeSoftKeyboard(),closeSoftKeyboard());
+        onView(withId(R.id.editTextAlamatBengkel)).perform(typeText("Almata bengkel"),closeSoftKeyboard(),closeSoftKeyboard());
+        onView(withId(R.id.editTextDescBengkel)).perform(typeText("desc bengkel"),closeSoftKeyboard(),closeSoftKeyboard());
         onView(withId(R.id.BtnSubmitB)).perform(click());
-        pauseTestFor(500);
-        intended(hasComponent(HomebklActivity.class.getName()));
-
-    }*/
+        pauseTestFor(2000);
+    }
 
 }

@@ -28,10 +28,10 @@ public class HomebklActivityTest
         onView(withId(R.id.keluar)).perform(click());
     }
 
-    @Test
+    /*@Test
     public void testHelp(){
         onView(withId(R.id.help)).perform(click());
-    }
+    }*/
 
     @Test
     public void pressBack() {
