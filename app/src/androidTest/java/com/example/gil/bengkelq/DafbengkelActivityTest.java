@@ -101,7 +101,7 @@ public class DafbengkelActivityTest {
     public void testDaftar1(){
         daftartestrule.launchActivity(null);
         onView(withId(R.id.editTextNamaPemilik)).perform(typeText("Pemilik Bengkel 1"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailBengkel)).perform(typeText("bengkelbengkel1@gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.editTextEmailBengkel)).perform(typeText("bengkelbengkel2@gmail.com"),closeSoftKeyboard());
         onView(withId(R.id.editTextPasswordBengkel)).perform(typeText("pemilik1"),closeSoftKeyboard());
         onView(withId(R.id.editTextPhoneBengkel)).perform(typeText("081234234234"),closeSoftKeyboard());
         onView(withId(R.id.BtnLanjut1)).perform(click());
