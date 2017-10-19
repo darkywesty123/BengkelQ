@@ -80,45 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             fbhelper.login(email,password,this);
-            /*progressLogin.setMessage("Mengecek akun ...");
-            progressLogin.show();
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        String user_id = mAuth.getCurrentUser().getUid();
-                        DatabaseReference mauCek = dataAkun.child(user_id).child("role");
-
-                        mauCek.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if(dataSnapshot.getValue().equals("PENGGUNA")){
-                                    progressLogin.dismiss();
-                                    finish();
-                                    Intent masukPengguna = new Intent(MainActivity.this, HomeActivity.class);
-                                    startActivity(masukPengguna);
-
-                                } else {
-                                    progressLogin.dismiss();
-                                    finish();
-                                    Intent masukBengkel = new Intent(MainActivity.this, HomebklActivity.class);
-                                    startActivity(masukBengkel);
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-
-
-                    } else {
-                        progressLogin.dismiss();
-                        Toast.makeText(MainActivity.this, "Email/password salah", Toast.LENGTH_LONG).show();
-                    }
-                }
-            });*/
         } else {
             Toast.makeText(MainActivity.this, "Lengkapi Email dan Password", Toast.LENGTH_LONG).show();
         }

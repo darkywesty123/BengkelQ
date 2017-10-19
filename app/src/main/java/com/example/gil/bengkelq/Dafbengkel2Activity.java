@@ -71,35 +71,6 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
         final String descBengkel = descB.getText().toString().trim();
 
         if(!TextUtils.isEmpty(namaBengkel) && !TextUtils.isEmpty(alamatBengkel) &&!TextUtils.isEmpty(descBengkel)) {
-
-            /*progressDaftar.setMessage("Mendaftarkan bengkel ...");
-            progressDaftar.show();
-
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
-                                String user_id = firebaseAuth.getCurrentUser().getUid();
-                                DatabaseReference baruDaftarPengguna = dataBengkel.child(user_id);
-
-                                baruDaftarPengguna.child("nama").setValue(namaPemilik);
-                                baruDaftarPengguna.child("role").setValue(role);
-                                baruDaftarPengguna.child("phone").setValue(phonePemilik);
-                                baruDaftarPengguna.child("namaBengkel").setValue(namaBengkel);
-                                baruDaftarPengguna.child("alamatBengkel").setValue(alamatBengkel);
-                                baruDaftarPengguna.child("descBengkel").setValue(descBengkel);
-
-                                progressDaftar.dismiss();
-
-                                Toast.makeText(Dafbengkel2Activity.this, "Pendaftaran berhasil", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(Dafbengkel2Activity.this, HomebklActivity.class));
-                            } else {
-                                progressDaftar.dismiss();
-                                Toast.makeText(Dafbengkel2Activity.this, "Terdapat kesalahan", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });*/
             fbHelper.registerUser(email, password, namaPemilik, "PEMILIK", Dafbengkel2Activity.this, this, phonePemilik,namaBengkel,alamatBengkel,descBengkel);
 
 

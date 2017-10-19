@@ -18,10 +18,14 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.core.deps.guava.base.Predicates.not;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Created by root on 10/15/17.
@@ -37,8 +41,6 @@ public class MainActivityTest {
 
     @Rule
     public ActivityTestRule<MainActivity> logintestrule = new ActivityTestRule<>(MainActivity.class, true, false);
-    private IntentsTestRule<MainActivity> testpindah = new IntentsTestRule<>(MainActivity.class, true, false);
-
 
     private void pauseTestFor(long milliseconds) {
         try {
@@ -55,44 +57,26 @@ public class MainActivityTest {
 
 
     @Test
-    public void zloginWithData() throws Exception {
+    public void loginUser() throws Exception {
         FirebaseAuth.getInstance().signOut();
         logintestrule.launchActivity(null);
         onView(withId(R.id.editTextEmail)).perform(typeText("user1@gmail.com"), closeSoftKeyboard());
         onView(withId(R.id.editTextPassword)).perform(typeText("user1111"), closeSoftKeyboard());
         onView(withId(R.id.BtnLogin)).perform(click());
-        pauseTestFor(waitLong);
+        pauseTestFor(wait);
         intended(hasComponent(HomeActivity.class.getName()));
     }
 
     @Test
-    public void zloginWithData2() throws Exception {
+    public void loginPemilik() throws Exception {
         FirebaseAuth.getInstance().signOut();
         logintestrule.launchActivity(null);
         onView(withId(R.id.editTextEmail)).perform(typeText("pemilik1@gmail.com"), closeSoftKeyboard());
         onView(withId(R.id.editTextPassword)).perform(typeText("pemilik1"), closeSoftKeyboard());
         onView(withId(R.id.BtnLogin)).perform(click());
-        pauseTestFor(waitLong);
+        pauseTestFor(wait);
         intended(hasComponent(HomebklActivity.class.getName()));
     }
-    /*@Test
-    public void cekLoginSukses() {
-        logintestrule.launchActivity(null);
-        onView(withId(R.id.editTextEmail)).perform(typeText("user1@gmail.com"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPassword)).perform(typeText("user1111"),closeSoftKeyboard());
-        onView(withId(R.id.BtnLogin)).perform(click());
-        pauseTestFor(waitLong);
-        Intents.release();
-    }
-    @Test
-    public void cekLoginSuksesPemilik() {
-        logintestrule.launchActivity(null);
-        onView(withId(R.id.editTextEmail)).perform(typeText("pemilik1@gmail.com"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPassword)).perform(typeText("pemilik1"),closeSoftKeyboard());
-        onView(withId(R.id.BtnLogin)).perform(click());
-        pauseTestFor(waitLong);
-        Intents.release();
-    }*/
 
     @After
     public void tearDown() throws Exception {
