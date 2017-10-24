@@ -1,7 +1,6 @@
 package com.example.gil.bengkelq;
 
 import android.support.test.espresso.intent.Intents;
-import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -14,19 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.*;
 
 /**
  * Created by root on 10/17/17.
@@ -58,7 +47,7 @@ public class Dafbengkel2ActivityTest {
     @Test
     public void cekNamaBengkel() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaBengkel)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaBengkel)).perform(typeText(""),closeSoftKeyboard());
         //onView(withId(R.id.BtnSubmitB)).perform(click());
         pauseTestFor(500);
         //onView(withText("Identitas bengkel belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
@@ -68,8 +57,8 @@ public class Dafbengkel2ActivityTest {
     @Test
     public void cekAlamatBengkel() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaBengkel)).perform(typeText("Users"),closeSoftKeyboard());
-        onView(withId(R.id.editTextAlamatBengkel)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaBengkel)).perform(typeText("Users"),closeSoftKeyboard());
+        onView(withId(R.id.txtAlamatBengkel)).perform(typeText(""),closeSoftKeyboard());
         //onView(withId(R.id.BtnSubmitB)).perform(click());
         pauseTestFor(500);
         //onView(withText("Identitas bengkel belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
@@ -78,9 +67,9 @@ public class Dafbengkel2ActivityTest {
     @Test
     public void cekDescBengkel() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaBengkel)).perform(typeText("Users"),closeSoftKeyboard());
-        onView(withId(R.id.editTextAlamatBengkel)).perform(typeText("users@gmail.com"),closeSoftKeyboard());
-        onView(withId(R.id.editTextDescBengkel)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaBengkel)).perform(typeText("Users"),closeSoftKeyboard());
+        onView(withId(R.id.txtAlamatBengkel)).perform(typeText("users@gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.txtDescBengkel)).perform(typeText(""),closeSoftKeyboard());
         //onView(withId(R.id.BtnSubmitB)).perform(click());
         pauseTestFor(500);
         //onView(withText("Identitas bengkel belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));

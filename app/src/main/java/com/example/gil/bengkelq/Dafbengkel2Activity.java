@@ -43,9 +43,9 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
 
         progressDaftar = new ProgressDialog(this);
 
-        namaB   = (EditText) findViewById(R.id.editTextNamaBengkel);
-        alamatB = (EditText) findViewById(R.id.editTextAlamatBengkel);
-        descB   = (EditText) findViewById(R.id.editTextDescBengkel);
+        namaB   = (EditText) findViewById(R.id.txtNamaBengkel);
+        alamatB = (EditText) findViewById(R.id.txtAlamatBengkel);
+        descB   = (EditText) findViewById(R.id.txtDescBengkel);
         submitB = (Button) findViewById(R.id.BtnSubmitB);
 
         submitB.setOnClickListener(this);
@@ -61,7 +61,6 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
 
     private void registerBengkel() {
 
-        //final String role = getIntent().getStringExtra("roleB").trim();
         final String namaPemilik = getIntent().getStringExtra("namaPem").trim();
         final String phonePemilik = getIntent().getStringExtra("phoneB").trim();
         String email = getIntent().getStringExtra("emailB").trim();
@@ -72,10 +71,8 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
 
         if(!TextUtils.isEmpty(namaBengkel) && !TextUtils.isEmpty(alamatBengkel) &&!TextUtils.isEmpty(descBengkel)) {
             fbHelper.registerUser(email, password, namaPemilik, "PEMILIK", Dafbengkel2Activity.this, this, phonePemilik,namaBengkel,alamatBengkel,descBengkel);
-
-
         } else {
-            Toast.makeText(Dafbengkel2Activity.this, "Identitas bengkel belum lengkap", Toast.LENGTH_LONG).show();
+            Toast.makeText(Dafbengkel2Activity.this, "Identitas bengkel belum lengkap", Toast.LENGTH_SHORT).show();
         }
 
     }

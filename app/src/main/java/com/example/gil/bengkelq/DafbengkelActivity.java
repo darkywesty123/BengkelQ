@@ -23,10 +23,10 @@ public class DafbengkelActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dafbengkel);
 
-        namaPemilik     = (EditText) findViewById(R.id.editTextNamaPemilik);
-        emailBengkel    = (EditText) findViewById(R.id.editTextEmailBengkel);
-        passwordBengkel = (EditText) findViewById(R.id.editTextPasswordBengkel);
-        phoneBengkel    = (EditText) findViewById(R.id.editTextPhoneBengkel);
+        namaPemilik     = (EditText) findViewById(R.id.txtNamaPemilik);
+        emailBengkel    = (EditText) findViewById(R.id.txtEmailBengkel);
+        passwordBengkel = (EditText) findViewById(R.id.txtPasswordBengkel);
+        phoneBengkel    = (EditText) findViewById(R.id.txtPhoneBengkel);
         buttonLanjut1   = (Button) findViewById(R.id.BtnLanjut1);
 
         buttonLanjut1.setOnClickListener(this);

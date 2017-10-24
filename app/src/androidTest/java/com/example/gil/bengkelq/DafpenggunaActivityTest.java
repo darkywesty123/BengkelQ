@@ -27,7 +27,6 @@ public class DafpenggunaActivityTest {
 
     @Rule
     public ActivityTestRule<DafpenggunaActivity> daftartestrule = new ActivityTestRule<>(DafpenggunaActivity.class, true, false);
-    public IntentsTestRule<DafpenggunaActivity> daftarintent = new IntentsTestRule<>(DafpenggunaActivity.class, true, false);
 
     private void pauseTestFor(long milliseconds) {
         try {
@@ -40,7 +39,7 @@ public class DafpenggunaActivityTest {
     @Test
     public void cekNama() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPengguna)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPengguna)).perform(typeText(""),closeSoftKeyboard());
         onView(withId(R.id.BtnDaftarPengguna)).perform(click());
         pauseTestFor(500);
     }
@@ -48,8 +47,8 @@ public class DafpenggunaActivityTest {
     @Test
     public void cekEmaildaftar() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPengguna)).perform(typeText("Users"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailPengguna)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPengguna)).perform(typeText("Users"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailPengguna)).perform(typeText(""),closeSoftKeyboard());
         onView(withId(R.id.BtnDaftarPengguna)).perform(click());
         pauseTestFor(500);
 }
@@ -57,9 +56,9 @@ public class DafpenggunaActivityTest {
     @Test
     public void cekPassworddaftar() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPengguna)).perform(typeText("Users"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailPengguna)).perform(typeText("users@gmail.com"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPasswordPengguna)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPengguna)).perform(typeText("Users"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailPengguna)).perform(typeText("users@gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.txtPasswordPengguna)).perform(typeText(""),closeSoftKeyboard());
         onView(withId(R.id.BtnDaftarPengguna)).perform(click());
         pauseTestFor(500);
     }
@@ -67,9 +66,9 @@ public class DafpenggunaActivityTest {
     @Test
     public void cekNamaPassworddaftar() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPengguna)).perform(typeText("Users"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailPengguna)).perform(typeText(""),closeSoftKeyboard());
-        onView(withId(R.id.editTextPasswordPengguna)).perform(typeText("12345678"),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPengguna)).perform(typeText("Users"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailPengguna)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtPasswordPengguna)).perform(typeText("12345678"),closeSoftKeyboard());
         onView(withId(R.id.BtnDaftarPengguna)).perform(click());
         pauseTestFor(500);
     }

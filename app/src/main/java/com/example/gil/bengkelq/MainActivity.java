@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
 
 
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextEmail = (EditText) findViewById(R.id.txtEmail);
+        editTextPassword = (EditText) findViewById(R.id.txtPassword);
         BtnLogin = (Button) findViewById(R.id.BtnLogin);
 
         BtnLogin.setOnClickListener(this);
@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = editTextPassword.getText().toString().trim();
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
-            fbhelper.login(email,password,this);
+            //fbhelper.login(email,password,this);
         } else {
-            Toast.makeText(MainActivity.this, "Lengkapi Email dan Password", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Lengkapi Email dan Password", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -36,8 +36,6 @@ public class MainActivityTest {
 
     private int wait = 500;
     private int waitLong = 5000;
-    private String formKurang = "Silahkan mengisi form dengan lengkap";
-    private String registrasiGagal = "Email sudah terdaftar";
 
     @Rule
     public ActivityTestRule<MainActivity> logintestrule = new ActivityTestRule<>(MainActivity.class, true, false);
@@ -60,8 +58,8 @@ public class MainActivityTest {
     public void loginUser() throws Exception {
         FirebaseAuth.getInstance().signOut();
         logintestrule.launchActivity(null);
-        onView(withId(R.id.editTextEmail)).perform(typeText("user1@gmail.com"), closeSoftKeyboard());
-        onView(withId(R.id.editTextPassword)).perform(typeText("user1111"), closeSoftKeyboard());
+        onView(withId(R.id.txtEmail)).perform(typeText("user1@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.txtPassword)).perform(typeText("user1111"), closeSoftKeyboard());
         onView(withId(R.id.BtnLogin)).perform(click());
         pauseTestFor(wait);
         intended(hasComponent(HomeActivity.class.getName()));
@@ -71,8 +69,8 @@ public class MainActivityTest {
     public void loginPemilik() throws Exception {
         FirebaseAuth.getInstance().signOut();
         logintestrule.launchActivity(null);
-        onView(withId(R.id.editTextEmail)).perform(typeText("pemilik1@gmail.com"), closeSoftKeyboard());
-        onView(withId(R.id.editTextPassword)).perform(typeText("pemilik1"), closeSoftKeyboard());
+        onView(withId(R.id.txtEmail)).perform(typeText("pemilik1@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.txtPassword)).perform(typeText("pemilik1"), closeSoftKeyboard());
         onView(withId(R.id.BtnLogin)).perform(click());
         pauseTestFor(wait);
         intended(hasComponent(HomebklActivity.class.getName()));

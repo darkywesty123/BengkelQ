@@ -60,7 +60,7 @@ public class DafbengkelActivityTest {
     @Test
     public void cekNama() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPemilik)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPemilik)).perform(typeText(""),closeSoftKeyboard());
         onView(withId(R.id.BtnLanjut1)).perform(click());
         pauseTestFor(500);
         //onView(withText("Identitas pemilik belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
@@ -68,8 +68,8 @@ public class DafbengkelActivityTest {
     @Test
     public void cekNamaEmail() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPemilik)).perform(typeText("wqweqwe"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailBengkel)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPemilik)).perform(typeText("wqweqwe"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailBengkel)).perform(typeText(""),closeSoftKeyboard());
         //onView(withId(R.id.BtnLanjut1)).perform(click());
         pauseTestFor(500);
         //onView(withText("Identitas pemilik belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
@@ -77,9 +77,9 @@ public class DafbengkelActivityTest {
     @Test
     public void cekNamaEmailPass() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPemilik)).perform(typeText("wqeqwewq"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailBengkel)).perform(typeText("123123123@afa.vd"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPasswordBengkel)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPemilik)).perform(typeText("wqeqwewq"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailBengkel)).perform(typeText("123123123@afa.vd"),closeSoftKeyboard());
+        onView(withId(R.id.txtPasswordBengkel)).perform(typeText(""),closeSoftKeyboard());
         //onView(withId(R.id.BtnLanjut1)).perform(click());
         pauseTestFor(500);
 
@@ -88,10 +88,10 @@ public class DafbengkelActivityTest {
     @Test
     public void cekNamaEmailPassPhone() {
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPemilik)).perform(typeText("qweqwewqe"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailBengkel)).perform(typeText("qweqwe@dsad.sad"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPasswordBengkel)).perform(typeText("123123123"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPhoneBengkel)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPemilik)).perform(typeText("qweqwewqe"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailBengkel)).perform(typeText("qweqwe@dsad.sad"),closeSoftKeyboard());
+        onView(withId(R.id.txtPasswordBengkel)).perform(typeText("123123123"),closeSoftKeyboard());
+        onView(withId(R.id.txtPhoneBengkel)).perform(typeText(""),closeSoftKeyboard());
         //onView(withId(R.id.BtnLanjut1)).perform(click());
         pauseTestFor(500);
         //onView(withText("Identitas pemilik belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
@@ -100,15 +100,15 @@ public class DafbengkelActivityTest {
     @Test
     public void testDaftar1(){
         daftartestrule.launchActivity(null);
-        onView(withId(R.id.editTextNamaPemilik)).perform(typeText("Pemilik Bengkel 1"),closeSoftKeyboard());
-        onView(withId(R.id.editTextEmailBengkel)).perform(typeText("bengkelbengkel2@gmail.com"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPasswordBengkel)).perform(typeText("pemilik1"),closeSoftKeyboard());
-        onView(withId(R.id.editTextPhoneBengkel)).perform(typeText("081234234234"),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaPemilik)).perform(typeText("Pemilik Bengkel 1"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailBengkel)).perform(typeText("bengkelbengkel2@gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.txtPasswordBengkel)).perform(typeText("pemilik1"),closeSoftKeyboard());
+        onView(withId(R.id.txtPhoneBengkel)).perform(typeText("081234234234"),closeSoftKeyboard());
         onView(withId(R.id.BtnLanjut1)).perform(click());
         pauseTestFor(2000);
-        onView(withId(R.id.editTextNamaBengkel)).perform(typeText("Pemilik"),closeSoftKeyboard(),closeSoftKeyboard());
-        onView(withId(R.id.editTextAlamatBengkel)).perform(typeText("Almata bengkel"),closeSoftKeyboard(),closeSoftKeyboard());
-        onView(withId(R.id.editTextDescBengkel)).perform(typeText("desc bengkel"),closeSoftKeyboard(),closeSoftKeyboard());
+        onView(withId(R.id.txtNamaBengkel)).perform(typeText("Pemilik"),closeSoftKeyboard());
+        onView(withId(R.id.txtAlamatBengkel)).perform(typeText("Almata bengkel"),closeSoftKeyboard());
+        onView(withId(R.id.txtDescBengkel)).perform(typeText("desc bengkel"),closeSoftKeyboard());
         onView(withId(R.id.BtnSubmitB)).perform(click());
         pauseTestFor(2000);
     }
