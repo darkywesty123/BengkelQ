@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="495dp"
+        android:layout_height="490dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -46,13 +46,15 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/masuk" />
+                android:text="@string/masuk"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/BtnRegisterAwal"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="@string/daftar"
+                android:textSize="20dp"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>

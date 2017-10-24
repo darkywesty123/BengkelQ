@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 public class DafbengkelActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView roleBengkel;
     private EditText namaPemilik;
     private EditText emailBengkel;
     private EditText passwordBengkel;
@@ -24,7 +23,6 @@ public class DafbengkelActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dafbengkel);
 
-        roleBengkel     = (TextView) findViewById(R.id.textViewRoleBengkel);
         namaPemilik     = (EditText) findViewById(R.id.editTextNamaPemilik);
         emailBengkel    = (EditText) findViewById(R.id.editTextEmailBengkel);
         passwordBengkel = (EditText) findViewById(R.id.editTextPasswordBengkel);
@@ -49,7 +47,7 @@ public class DafbengkelActivity extends AppCompatActivity implements View.OnClic
         if(!TextUtils.isEmpty(nama) && !TextUtils.isEmpty(email)
                 && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(phone)) {
             Intent intent = new Intent(DafbengkelActivity.this, Dafbengkel2Activity.class);
-            intent.putExtra("roleB", roleBengkel.getText().toString());
+            //intent.putExtra("roleB", roleBengkel.getText().toString());
             intent.putExtra("namaPem", namaPemilik.getText().toString());
             intent.putExtra("emailB", emailBengkel.getText().toString());
             intent.putExtra("passB", passwordBengkel.getText().toString());

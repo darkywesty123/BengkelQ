@@ -29,6 +29,7 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dataBengkel;
 
+    private FBHelper fbHelper = new FBHelper();
     private ProgressDialog progressDaftar;
 
     @Override
@@ -60,7 +61,7 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
 
     private void registerBengkel() {
 
-        final String role = getIntent().getStringExtra("roleB").trim();
+        //final String role = getIntent().getStringExtra("roleB").trim();
         final String namaPemilik = getIntent().getStringExtra("namaPem").trim();
         final String phonePemilik = getIntent().getStringExtra("phoneB").trim();
         String email = getIntent().getStringExtra("emailB").trim();
@@ -70,35 +71,9 @@ public class Dafbengkel2Activity extends AppCompatActivity implements View.OnCli
         final String descBengkel = descB.getText().toString().trim();
 
         if(!TextUtils.isEmpty(namaBengkel) && !TextUtils.isEmpty(alamatBengkel) &&!TextUtils.isEmpty(descBengkel)) {
+            fbHelper.registerUser(email, password, namaPemilik, "PEMILIK", Dafbengkel2Activity.this, this, phonePemilik,namaBengkel,alamatBengkel,descBengkel);
 
-            progressDaftar.setMessage("Mendaftarkan bengkel ...");
-            progressDaftar.show();
 
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
-                                String user_id = firebaseAuth.getCurrentUser().getUid();
-                                DatabaseReference baruDaftarPengguna = dataBengkel.child(user_id);
-
-                                baruDaftarPengguna.child("nama").setValue(namaPemilik);
-                                baruDaftarPengguna.child("role").setValue(role);
-                                baruDaftarPengguna.child("phone").setValue(phonePemilik);
-                                baruDaftarPengguna.child("namaBengkel").setValue(namaBengkel);
-                                baruDaftarPengguna.child("alamatBengkel").setValue(alamatBengkel);
-                                baruDaftarPengguna.child("descBengkel").setValue(descBengkel);
-
-                                progressDaftar.dismiss();
-
-                                Toast.makeText(Dafbengkel2Activity.this, "Pendaftaran berhasil", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(Dafbengkel2Activity.this, HomebklActivity.class));
-                            } else {
-                                progressDaftar.dismiss();
-                                Toast.makeText(Dafbengkel2Activity.this, "Terdapat kesalahan", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
         } else {
             Toast.makeText(Dafbengkel2Activity.this, "Identitas bengkel belum lengkap", Toast.LENGTH_LONG).show();
         }
