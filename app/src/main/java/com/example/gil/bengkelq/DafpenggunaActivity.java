@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class DafpenggunaActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView rolePengguna;
     private EditText namaPengguna;
     private EditText emailPengguna;
     private EditText passwordPengguna;
@@ -40,10 +39,9 @@ public class DafpenggunaActivity extends AppCompatActivity implements View.OnCli
         firebaseAuth = FirebaseAuth.getInstance();
         dataPengguna = FirebaseDatabase.getInstance().getReference().child("akun");
 
-        rolePengguna = (TextView) findViewById(R.id.textViewRolePengguna);
-        namaPengguna = (EditText) findViewById(R.id.editTextNamaPengguna);
-        emailPengguna = (EditText) findViewById(R.id.editTextEmailPengguna);
-        passwordPengguna = (EditText) findViewById(R.id.editTextPasswordPengguna);
+        namaPengguna = (EditText) findViewById(R.id.txtNamaPengguna);
+        emailPengguna = (EditText) findViewById(R.id.txtEmailPengguna);
+        passwordPengguna = (EditText) findViewById(R.id.txtPasswordPengguna);
         buttonDaftarPengguna = (Button) findViewById(R.id.BtnDaftarPengguna);
 
         buttonDaftarPengguna.setOnClickListener(this);
@@ -59,7 +57,6 @@ public class DafpenggunaActivity extends AppCompatActivity implements View.OnCli
     private void registerUser() {
 
         final String nama = namaPengguna.getText().toString().trim();
-        //final String role = rolePengguna.getText().toString().trim();
         String email = emailPengguna.getText().toString().trim();
         String password = passwordPengguna.getText().toString().trim();
 

@@ -45,7 +45,7 @@
                 />
 
             <EditText
-                android:id="@+id/editTextNamaBengkel"
+                android:id="@+id/txtNamaBengkel"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -54,7 +54,7 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/editTextAlamatBengkel"
+                android:id="@+id/txtAlamatBengkel"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
