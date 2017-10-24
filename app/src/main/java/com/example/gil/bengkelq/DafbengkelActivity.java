@@ -47,7 +47,6 @@ public class DafbengkelActivity extends AppCompatActivity implements View.OnClic
         if(!TextUtils.isEmpty(nama) && !TextUtils.isEmpty(email)
                 && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(phone)) {
             Intent intent = new Intent(DafbengkelActivity.this, Dafbengkel2Activity.class);
-            //intent.putExtra("roleB", roleBengkel.getText().toString());
             intent.putExtra("namaPem", namaPemilik.getText().toString());
             intent.putExtra("emailB", emailBengkel.getText().toString());
             intent.putExtra("passB", passwordBengkel.getText().toString());

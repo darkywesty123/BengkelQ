@@ -31,11 +31,6 @@ public class HomeActivityTest {
     }
 
     @Test
-    public void testHelp(){
-        onView(withId(R.id.help)).perform(click());
-    }
-
-    @Test
     public void pressBack() {
         onView(isRoot()).perform(ViewActions.pressBack());
     }

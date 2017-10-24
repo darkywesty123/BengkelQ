@@ -9,6 +9,10 @@ import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +24,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 public class PilihDaftarActivityTest {
 
 
-    public IntentsTestRule<PilihDaftarActivity> testintent = new IntentsTestRule<>(PilihDaftarActivity.class, true, false);
+    public ActivityTestRule<PilihDaftarActivity> testintent = new ActivityTestRule<>(PilihDaftarActivity.class, true, false);
 
     private void pauseTestFor(long milliseconds) {
         try {
@@ -30,13 +34,23 @@ public class PilihDaftarActivityTest {
         }
     }
 
+    @Before
+    public void setUp() throws Exception {
+        Intents.init();
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        Intents.release();
+    }
+
     @Test
     public void testDaftarPengguna()throws Exception {
         testintent.launchActivity(null);
         onView(withId(R.id.BtnPengguna)).perform(click());
         pauseTestFor(500);
         intended(hasComponent(DafpenggunaActivity.class.getName()));
-        Intents.release();
     }
 
     @Test
@@ -45,6 +59,5 @@ public class PilihDaftarActivityTest {
         onView(withId(R.id.BtnBengkel)).perform(click());
         pauseTestFor(500);
         intended(hasComponent(DafbengkelActivity.class.getName()));
-        Intents.release();
     }
 }

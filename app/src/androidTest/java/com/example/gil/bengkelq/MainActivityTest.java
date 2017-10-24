@@ -17,15 +17,9 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.core.deps.guava.base.Predicates.not;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
-import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Created by root on 10/15/17.
@@ -74,6 +68,16 @@ public class MainActivityTest {
         onView(withId(R.id.BtnLogin)).perform(click());
         pauseTestFor(wait);
         intended(hasComponent(HomebklActivity.class.getName()));
+    }
+
+    @Test
+    public void loginWrongUser() throws Exception {
+        FirebaseAuth.getInstance().signOut();
+        logintestrule.launchActivity(null);
+        onView(withId(R.id.txtEmail)).perform(typeText("usersalah@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.txtPassword)).perform(typeText("user1111"), closeSoftKeyboard());
+        onView(withId(R.id.BtnLogin)).perform(click());
+        pauseTestFor(wait);
     }
 
     @After

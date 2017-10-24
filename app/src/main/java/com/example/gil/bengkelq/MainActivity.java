@@ -57,9 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                // Ambil informasi user saat ini
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                // Jika masih login (variabel user != null)
                 if (user != null) {
                     fbhelper.getRole(MainActivity.this);
                 }
@@ -79,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = editTextPassword.getText().toString().trim();
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
-            //fbhelper.login(email,password,this);
+            fbhelper.login(email,password,this);
         } else {
             Toast.makeText(MainActivity.this, "Lengkapi Email dan Password", Toast.LENGTH_SHORT).show();
         }

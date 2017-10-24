@@ -44,8 +44,7 @@ public class FBHelper {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(dataSnapshot.getValue().equals("PENGGUNA")){
-                                progress.dismiss();
-                                activity.finish();
+
                             } else {
                                 progress.dismiss();
                                 activity.finish();

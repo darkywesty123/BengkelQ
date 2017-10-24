@@ -1,10 +1,22 @@
 package com.example.gil.bengkelq;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +36,14 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class DafpenggunaActivityTest {
+
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference ref = db.getReference();
+    private String dataFireBase;
+
+    private EditText email, nama;
 
     @Rule
     public ActivityTestRule<DafpenggunaActivity> daftartestrule = new ActivityTestRule<>(DafpenggunaActivity.class, true, false);
@@ -64,12 +84,39 @@ public class DafpenggunaActivityTest {
     }
 
     @Test
-    public void cekNamaPassworddaftar() {
+    public void cekDaftar() {
+        String email = "useruser6@gmail.com";
         daftartestrule.launchActivity(null);
         onView(withId(R.id.txtNamaPengguna)).perform(typeText("Users"),closeSoftKeyboard());
-        onView(withId(R.id.txtEmailPengguna)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailPengguna)).perform(typeText(email),closeSoftKeyboard());
         onView(withId(R.id.txtPasswordPengguna)).perform(typeText("12345678"),closeSoftKeyboard());
         onView(withId(R.id.BtnDaftarPengguna)).perform(click());
         pauseTestFor(500);
+
+        getDataFromFireBase(email);
+    }
+
+    public void getDataFromFireBase(String email){
+        mAuth = FirebaseAuth.getInstance();
+        String user_id = mAuth.getCurrentUser().getUid();
+        DatabaseReference chill = ref.child("akun").child(user_id).child("role");
+        chill.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //String role=dataSnapshot.getValue(String.class);
+                if(dataSnapshot.getValue().equals("PENGGUNA")){
+                    //dataFireBase = (String) dataSnapshot.child("nama").getValue();
+
+                }else {
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        Assert.assertEquals(email, mAuth.getCurrentUser().getEmail());
     }
 }

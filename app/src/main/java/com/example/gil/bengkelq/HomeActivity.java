@@ -42,10 +42,6 @@ public class HomeActivity extends AppCompatActivity {
                 signOut();
                 return true;
 
-            case R.id.help:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
-                return true;
 
             default:
                 // If we got here, the user's action was not recognized.

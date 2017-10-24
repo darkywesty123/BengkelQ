@@ -61,7 +61,7 @@ public class DafbengkelActivityTest {
     public void cekNama() {
         daftartestrule.launchActivity(null);
         onView(withId(R.id.txtNamaPemilik)).perform(typeText(""),closeSoftKeyboard());
-        onView(withId(R.id.BtnLanjut1)).perform(click());
+        //onView(withId(R.id.BtnLanjut1)).perform(click());
         pauseTestFor(500);
         //onView(withText("Identitas pemilik belum lengkap")).inRoot(withDecorView(not(is(daftartestrule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
@@ -101,7 +101,7 @@ public class DafbengkelActivityTest {
     public void testDaftar1(){
         daftartestrule.launchActivity(null);
         onView(withId(R.id.txtNamaPemilik)).perform(typeText("Pemilik Bengkel 1"),closeSoftKeyboard());
-        onView(withId(R.id.txtEmailBengkel)).perform(typeText("bengkelbengkel2@gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.txtEmailBengkel)).perform(typeText("bengkelbengkel5@gmail.com"),closeSoftKeyboard());
         onView(withId(R.id.txtPasswordBengkel)).perform(typeText("pemilik1"),closeSoftKeyboard());
         onView(withId(R.id.txtPhoneBengkel)).perform(typeText("081234234234"),closeSoftKeyboard());
         onView(withId(R.id.BtnLanjut1)).perform(click());

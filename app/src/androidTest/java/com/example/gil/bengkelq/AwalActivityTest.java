@@ -5,6 +5,10 @@ import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +23,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class AwalActivityTest {
 
 
-    public IntentsTestRule<AwalActivity> testintent = new IntentsTestRule<>(AwalActivity.class, true, false);
+    public ActivityTestRule<AwalActivity> testintent = new ActivityTestRule<AwalActivity>(AwalActivity.class, true, false);
 
     private void pauseTestFor(long milliseconds) {
         try {
@@ -29,13 +33,23 @@ public class AwalActivityTest {
         }
     }
 
+    @Before
+    public void setUp() throws Exception {
+        Intents.init();
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        Intents.release();
+    }
+
     @Test
     public void testMasuk()throws Exception{
         testintent.launchActivity(null);
         onView(withId(R.id.BtnLoginAwal)).perform(click());
         pauseTestFor(500);
         intended(hasComponent(MainActivity.class.getName()));
-        Intents.release();
     }
 
     @Test
@@ -44,6 +58,5 @@ public class AwalActivityTest {
         onView(withId(R.id.BtnRegisterAwal)).perform(click());
         pauseTestFor(500);
         intended(hasComponent(PilihDaftarActivity.class.getName()));
-        Intents.release();
     }
 }
