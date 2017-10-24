@@ -100,23 +100,6 @@ public class DafpenggunaActivityTest {
         mAuth = FirebaseAuth.getInstance();
         String user_id = mAuth.getCurrentUser().getUid();
         DatabaseReference chill = ref.child("akun").child(user_id).child("role");
-        chill.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //String role=dataSnapshot.getValue(String.class);
-                if(dataSnapshot.getValue().equals("PENGGUNA")){
-                    //dataFireBase = (String) dataSnapshot.child("nama").getValue();
-
-                }else {
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
         Assert.assertEquals(email, mAuth.getCurrentUser().getEmail());
     }
 }
