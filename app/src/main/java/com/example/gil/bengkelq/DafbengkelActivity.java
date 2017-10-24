@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 public class DafbengkelActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //private TextView roleBengkel;
     private EditText namaPemilik;
     private EditText emailBengkel;
     private EditText passwordBengkel;
@@ -24,7 +23,6 @@ public class DafbengkelActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dafbengkel);
 
-        //roleBengkel     = (TextView) findViewById(R.id.textViewRoleBengkel);
         namaPemilik     = (EditText) findViewById(R.id.editTextNamaPemilik);
         emailBengkel    = (EditText) findViewById(R.id.editTextEmailBengkel);
         passwordBengkel = (EditText) findViewById(R.id.editTextPasswordBengkel);
